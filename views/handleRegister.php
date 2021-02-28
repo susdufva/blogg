@@ -1,5 +1,6 @@
 <?php 
-    include("database_connection.php");
+    //set_include_path('/susannanoah_blogg/includes');
+    include("../includes/database_connection.php");
     session_start();
 ?>
 <!DOCTYPE html>

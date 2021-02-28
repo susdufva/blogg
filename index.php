@@ -1,5 +1,7 @@
 <?php
     session_start();
+    include("includes/database_connection.php");
+    //include kopplar till databasen
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +13,6 @@
 </head>
 <body>
     <?php
-        
-        include("database_connection.php");
-
-        //include kopplar till databasen
 
         echo "<h2>Välkommen till millhouse blogg!</h2>";
 
