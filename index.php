@@ -11,13 +11,10 @@
 </head>
 <body>
     <?php
-        $dsn = "mysql:host=localhost;dbname=blogg";
-        $user = "root";
-        $password = "";
+        
+        include("database_connection.php");
 
-        $pdo = new PDO($dsn, $user, $password); 
-
-        //koden ovan kopplar till databas
+        //include kopplar till databasen
 
         echo "<h2>Välkommen till millhouse blogg!</h2>";
 

@@ -1,4 +1,5 @@
 <?php 
+    include("database_connection.php");
     session_start();
 ?>
 <!DOCTYPE html>
@@ -12,13 +13,6 @@
 <body>
 
 <?php
-    $dsn = "mysql:host=localhost;dbname=blogg";
-    $user = "root";
-    $password = "";
-    
-    $pdo = new PDO($dsn, $user, $password); 
-    
-    //koden ovan kopplar till databas
     
     $_SESSION['username'] = $_POST['username'];
     $_SESSION['password'] = $_POST['password'];
@@ -28,8 +22,7 @@
     
     $sql = "INSERT INTO users (username, password) VALUES(:username_IN, :password_IN)";
     
-    $stm = $pdo->prepare($sql); //säger åt pdo att förbereda queryn 
-    //ersätter IN i vår query med värdet på $username
+    $stm = $pdo->prepare($sql); 
     $stm->bindParam(':username_IN', $username);
     $stm->bindParam(':password_IN', $userPassword);
     if($stm->execute()){ //kör sql frågan

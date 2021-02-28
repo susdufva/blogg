@@ -1,4 +1,5 @@
 <?php
+    include("database_connection.php");
     session_start();
 ?>
 <!DOCTYPE html>
@@ -17,13 +18,6 @@
     </form> 
 
     <?php
-        $dsn = "mysql:host=localhost;dbname=blogg";
-        $user = "root";
-        $password = "";
- 
-        $pdo = new PDO($dsn, $user, $password); 
-
-
   
         $action = (isset($_GET['action']) ? $_GET['action'] : "");
 
