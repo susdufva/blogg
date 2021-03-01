@@ -12,22 +12,24 @@
     <title>Välkommen</title>
 </head>
 <body>
-    <?php
+    <h1>Välkommen till Millhouse blogg!</h1>
 
-        echo "<h2>Välkommen till Millhouse blogg!</h2>";
+    <?php
 
         $stm = $pdo->query("SELECT id, username, password FROM users");
         //sql fråga för att hämta info från databas
 
-        echo "<h3>Registrera dig för att kunna logga in:</h3>";
-
     ?>
+    <h3>Registrera dig för att kunna logga in:</h3>
 
     <form method="post" action="views/handleRegister.php">
         <input type="text" placeholder="username" name="username"> <br>
         <input type="password" placeholder="password" name="password"> <br>
-        <input type="submit" value="Register">
+        <input type="submit" value="Registrera">
     </form>
-   
+    <h4>Är du redan registrerad, logga in direkt</h4> 
+    <form method="post" action="views/login.php">
+    <button type="submit">Logga in</button>
+</form>
 </body>
 </html> 

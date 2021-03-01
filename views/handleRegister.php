@@ -20,12 +20,13 @@
 
     $username = $_POST['username'];
 
+    //följande kod kollar efter dubbletter i databasen
     $userSql = "SELECT * FROM users WHERE username=:username_IN";
     $stmt = $pdo->prepare($userSql); 
     $stmt->bindParam(':username_IN', $username);
     $stmt->execute();
     
-    if($stmt->rowCount()){
+    if($stmt->rowCount()){ //Om det returneras rader så finns redan användarnamnet
         echo "Användarnamnet upptaget <br />";
         echo '<a href="../index.php">Tillbaka</a>';
         die();
@@ -40,7 +41,7 @@
     $userLogin = md5($userLogin.$salt); //för att logga in sen 
     
     $sql = "INSERT INTO users (username, password) VALUES(:username_IN, :password_IN)";
-    
+    //queryn lägger till nya unika användare i databasen 
     $stm = $pdo->prepare($sql); 
     $stm->bindParam(':username_IN', $username);
     $stm->bindParam(':password_IN', $userPassword);
