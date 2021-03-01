@@ -14,7 +14,7 @@
 <body>
     <?php
 
-        echo "<h2>Välkommen till millhouse blogg!</h2>";
+        echo "<h2>Välkommen till Millhouse blogg!</h2>";
 
         $stm = $pdo->query("SELECT id, username, password FROM users");
         //sql fråga för att hämta info från databas

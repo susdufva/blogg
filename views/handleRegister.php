@@ -20,6 +20,9 @@
 
     $username = $_POST['username'];
     $userPassword = $_POST['password'];
+
+    $salt = "lo&7äöpetn67^^7337--*)(&¤"; //salt används för att skydda krypteringen, för att försvåra lösenordet/krypteringen ännu mer 
+    $userPassword = md5($userPassword.$salt); //
     
     $sql = "INSERT INTO users (username, password) VALUES(:username_IN, :password_IN)";
     
