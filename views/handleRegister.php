@@ -19,10 +19,25 @@
     $_SESSION['password'] = $_POST['password'];
 
     $username = $_POST['username'];
+
+    $userSql = "SELECT * FROM users WHERE username=:username_IN";
+    $stmt = $pdo->prepare($userSql); 
+    $stmt->bindParam(':username_IN', $username);
+    $stmt->execute();
+    
+    if($stmt->rowCount()){
+        echo "Användarnamnet upptaget <br />";
+        echo '<a href="../index.php">Tillbaka</a>';
+        die();
+    }
+
+    
+
     $userPassword = $_POST['password'];
 
     $salt = "lo&7äöpetn67^^7337--*)(&¤"; //salt används för att skydda krypteringen, för att försvåra lösenordet/krypteringen ännu mer 
-    $userPassword = md5($userPassword.$salt); //
+    $userPassword = md5($userPassword.$salt); 
+    $userLogin = md5($userLogin.$salt); //för att logga in sen 
     
     $sql = "INSERT INTO users (username, password) VALUES(:username_IN, :password_IN)";
     

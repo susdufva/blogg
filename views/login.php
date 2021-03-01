@@ -11,13 +11,15 @@
     <title>Logga in</title>
 </head>
 <body>
-    <form method="post" action="handleLogin.php?action=login">
+    <form method="post" action="login.php?action=login">
         <input type="text" placeholder ="username" name="username" id="username" > <br> 
         <input type="password" placeholder="password" name="password" id="password" > <br>
         <input type="submit" name="login" value="Logga in">
     </form> 
 
     <?php
+        //$salt = "lo&7äöpetn67^^7337--*)(&¤";
+        //$userLogin = md5($userLogin.$salt); //för att logga in sen 
   
         $action = (isset($_GET['action']) ? $_GET['action'] : "");
 
