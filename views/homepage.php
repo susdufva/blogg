@@ -21,6 +21,11 @@
         
     }
     //while satsen skriver ut meddelandena på sidan
+
+    if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
+        echo '<a href="logout.php">Logga ut </a>';
+        die();
+    }
     
 ?>
 </body>

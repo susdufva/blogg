@@ -34,17 +34,16 @@
 
     
 
-    $userPassword = $_POST['password'];
+    $password = $_POST['password'];
 
     $salt = "lo&7äöpetn67^^7337--*)(&¤"; //salt används för att skydda krypteringen, för att försvåra lösenordet/krypteringen ännu mer 
-    $userPassword = md5($userPassword.$salt); 
-    $userLogin = md5($userLogin.$salt); //för att logga in sen 
+    $password = md5($password.$salt); 
     
     $sql = "INSERT INTO users (username, password) VALUES(:username_IN, :password_IN)";
     //queryn lägger till nya unika användare i databasen 
     $stm = $pdo->prepare($sql); 
     $stm->bindParam(':username_IN', $username);
-    $stm->bindParam(':password_IN', $userPassword);
+    $stm->bindParam(':password_IN', $password);
     if($stm->execute()){ //kör sql frågan
         header ("location:login.php");
     } else {

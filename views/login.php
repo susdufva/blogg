@@ -1,6 +1,6 @@
 <?php
-    include("../includes/database_connection.php");
     session_start();
+    include("../includes/database_connection.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,33 +18,38 @@
     </form> 
 
     <?php
-        //$salt = "lo&7äöpetn67^^7337--*)(&¤";
-        //$userLogin = md5($userLogin.$salt); //för att logga in sen 
-  
+ 
         $action = (isset($_GET['action']) ? $_GET['action'] : "");
 
         if(isset($action) && $action == "login"){
+            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['password'] = $_POST['password'];
+     
+            $username = $_POST['username'];
+            $userPassword = $_POST['password'];
+
+            $salt = "lo&7äöpetn67^^7337--*)(&¤";
+            $userPassword = md5($userPassword.$salt); //för att logga in och hitta det krypterade lösenordet från databasen
       
             $sql = "SELECT id, username, password FROM users WHERE username=:username_IN AND password=:password_IN"; 
             $stm = $pdo->prepare($sql);
-            $stm->bindParam(":username_IN", $_POST['username']);
-            $stm->bindParam(":password_IN", $_POST['password']); 
+            $stm->bindParam(":username_IN", $username); //$_POST['username']
+            $stm->bindParam(":password_IN", $userPassword); //$_POST['password']
             $stm->execute();
             $return = $stm->fetch();
 
             if($return[0] > 0) {
-                $_SESSION['username'] = $_POST['username'];
-                $_SESSION['password'] = $_POST['password'];
+                session_start();
+                $_SESSION['username'] = $username;
+                $_SESSION['password'] = $userPassword;
 
-                echo "<h1>Välkommen ". $_SESSION['username'] ."</h1>";
+                header("location:homepage.php");
+            }else {
+                echo "Fel användarnamn eller lösenord!";
             }
            
         }
         
-        if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
-            echo '<a href="logout.php">Logga ut </a>';
-            die();
-        }
         
 
     ?>
