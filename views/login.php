@@ -45,7 +45,9 @@
 
                 header("location:homepage.php");
             }else {
+                echo "<p>";
                 echo "Fel användarnamn eller lösenord!";
+                echo "</p>";
             }
            
         }

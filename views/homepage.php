@@ -12,11 +12,13 @@
 </head>
 <body>
 <?php
+    echo '<a href="post.php"> Skapa och redigera inlägg </a>';
+
     $stmt = $pdo->query("SELECT * FROM posts");
 
     while($row = $stmt->fetch()){
         echo "<p>";
-        echo "<a href=\"editPosts.php?id=". $row['id'] . "\">" . $row['id'] ."Ändra". "</a>" . ". " . "<br />" . $row['title'] . "<br />" . $row['message'] . "<br />";
+        echo "<a href=\"editPosts.php?id=". $row['id'] . "\">" . "</a>" . "<br />" . $row['title'] . "<br />" . $row['message'] . "<br />";
         echo "</p>";
         
     }
