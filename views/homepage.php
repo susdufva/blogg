@@ -12,22 +12,25 @@
 </head>
 <body>
 <?php
-    echo '<a href="post.php"> Skapa och redigera inlägg </a>';
+    if(isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
+        echo '<a href="post.php"> Skapa och redigera inlägg </a>';
+    }
+    
 
     $stmt = $pdo->query("SELECT * FROM posts");
 
     while($row = $stmt->fetch()){
         echo "<p>";
-        echo "<a href=\"editPosts.php?id=". $row['id'] . "\">" . "</a>" . "<br />" . $row['title'] . "<br />" . $row['message'] . "<br />";
-        echo "</p>";
-        
+        echo $row['title'] . "<br />" . $row['message'] . "<br />" . "<a href=\"comment.php?id=". $row['id'] . "\">" ."Kommentera". "</a>";
+        echo "</p>"; 
     }
     //while satsen skriver ut meddelandena på sidan
+   
 
     if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
         echo '<a href="logout.php">Logga ut </a>';
         die();
-    }
+    } //om vi är inloggade kommer länk för att logga ut
     
 ?>
 </body>

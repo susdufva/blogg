@@ -71,7 +71,7 @@
             <option value="Accessoarer">Accessoarer</option>
             <option value="Inredning">Inredning</option>
         </select> <br>
-        <input type="submit" value="uppdatera">
+        <input type="submit" value="Uppdatera">
     </form>
 
     <form method="post" action="editPosts.php?action=delete">

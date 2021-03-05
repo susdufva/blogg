@@ -16,7 +16,7 @@
 
     <?php
 
-        $stm = $pdo->query("SELECT id, username, password FROM users");
+        $stm = $pdo->query("SELECT id, username, password, role FROM users");
         //sql fråga för att hämta info från databas
 
     ?>

@@ -31,7 +31,7 @@
             $salt = "lo&7äöpetn67^^7337--*)(&¤";
             $userPassword = md5($userPassword.$salt); //för att logga in och hitta det krypterade lösenordet från databasen
       
-            $sql = "SELECT id, username, password FROM users WHERE username=:username_IN AND password=:password_IN"; 
+            $sql = "SELECT id, username, password, role FROM users WHERE username=:username_IN AND password=:password_IN"; 
             $stm = $pdo->prepare($sql);
             $stm->bindParam(":username_IN", $username); //$_POST['username']
             $stm->bindParam(":password_IN", $userPassword); //$_POST['password']
@@ -42,6 +42,7 @@
                 
                 $_SESSION['username'] = $username;
                 $_SESSION['password'] = $userPassword;
+                $_SESSION['role'] = $return['role'];
 
                 header("location:homepage.php");
             }else {
