@@ -5,10 +5,9 @@
     $action = (isset($_GET['action']) ? $_GET['action'] : "");
     
     if(isset($action) && $action == "comment"){
-        $sql = "INSERT INTO comments (content, date) VALUES(:comment_IN, :date_IN)";
+        $sql = "INSERT INTO comments (content) VALUES(:comment_IN)";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':comment_IN', $_POST['comment']);
-        $stmt->bindParam(':date_IN', $_POST['date']);
         
         if($stmt->execute()) {
  
@@ -38,19 +37,19 @@
     }
      
     $userData = $stmt->fetch();
+    
 ?>
+<p>
+    <?=$userData['message']?>
+</p>
 <h3>Här kan du kommentera inlägget: </h3>
     <form method="post" action="comment.php?action=comment">
         <input type="hidden" name="id" value="<?=$_GET['id']?>">
-        <label for="textarea">Inlägg: </label>
-        <input type="text" name="message" id="message" value="<?=$userData['message']?>" /> <br>
         <label for="text">Kommentera: </label>
-        <input type="text" name="comment"> <br>
-        <input type="date" id="date" name="date" value=" " 
-               min="2021-01-01" max="2021-12-31"> <br>
+        <input type="text" name="comment">
         <input type="submit" value="Kommentera">
     </form>
-    <a href="homepage.php">Tillbaka</a>
+    
 <?php
 
     $stm = $pdo->query("SELECT * FROM comments");
@@ -61,10 +60,11 @@
         echo "</p>";
         
     }
-    if(isset($_SESSION['role']) && $_SESSION['role'] == "user") {
+    //if(isset($_SESSION['role']) && $_SESSION['role'] == "user") {
       
-    }
+   // }
 
 ?>    
+    <a href="homepage.php">Tillbaka</a>
 </body>
 </html>
