@@ -38,7 +38,7 @@
             $stm->execute();
             $return = $stm->fetch();
 
-            if($return[0] > 0) {
+            if($return) {
                 
                 $_SESSION['username'] = $username;
                 $_SESSION['password'] = $userPassword;

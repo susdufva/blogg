@@ -33,7 +33,7 @@ $stmt->bindParam(':date_IN', $date);
 $stmt->bindParam(':category_IN', $category);
 
 if($stmt->execute()){
-    header ("location:post.php");
+    header ("location:homepage.php");
 }
 
 ?>
