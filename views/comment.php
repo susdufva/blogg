@@ -1,19 +1,6 @@
 <?php
     include("../includes/database_connection.php");
     session_start();
-
-    $action = (isset($_GET['action']) ? $_GET['action'] : "");
-    
-    if(isset($action) && $action == "comment"){
-        $sql = "INSERT INTO comments (content) VALUES(:comment_IN)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':comment_IN', $_POST['comment']);
-        
-        if($stmt->execute()) {
- 
-            header("location:comment.php");
-        } 
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +13,7 @@
 <body>
 <?php
      
-    $stmt = $pdo->prepare("SELECT id, title, message, category FROM posts WHERE id=:id_IN");
+    $stmt = $pdo->prepare("SELECT id, title, message FROM posts WHERE id=:id_IN");
     $stmt->bindParam(":id_IN", $_GET['id']);
  
     $success = $stmt->execute();
@@ -38,13 +25,15 @@
      
     $userData = $stmt->fetch();
     
+    //koden ovan behövs för att hämta meddelandet jag vill kommentera
 ?>
 <p>
-    <?=$userData['message']?>
+    <?=$userData['message']?> <!-- skriver ut meddelandet på sidan -->
 </p>
 <h3>Här kan du kommentera inlägget: </h3>
     <form method="post" action="comment.php?action=comment">
         <input type="hidden" name="id" value="<?=$_GET['id']?>">
+        <b><?=$_SESSION['username']?> </b> </br>
         <label for="text">Kommentera: </label>
         <input type="text" name="comment">
         <input type="submit" value="Kommentera">
@@ -52,11 +41,25 @@
     
 <?php
 
-    $stm = $pdo->query("SELECT * FROM comments");
+    $action = (isset($_GET['action']) ? $_GET['action'] : "");
+    
+    if(isset($action) && $action == "comment"){
+        $sql = "INSERT INTO comments (content, user, postsid) VALUES(:comment_IN, :user_IN, :id_IN)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':comment_IN', $_POST['comment']);
+        $stmt->bindParam(':user_IN', $_SESSION['username']);
+        $stmt->bindParam(':id_IN', $_POST['id']); //kopplar foreign key postsid
+    
+    if($stmt->execute()) {
+        header("location:comment.php");
+    } 
+}
+
+    $stm = $pdo->query("SELECT * FROM comments WHERE postsid=".$_GET['id']);
 
     while($row = $stm->fetch()){
         echo "<p>";
-        echo "<a href=\"editPosts.php?id=". $row['id'] . "\">"  .$row['id']. "</a>" . "<br />" . $row['content'] . "<br />" ;
+        echo "<a href=\"editPosts.php?id=". $row['id'] . "\">"  .$row['id']. "</a>" . ". " . $row['content'] . "<br />" ;
         echo "</p>";
         
     }
