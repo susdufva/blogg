@@ -52,17 +52,22 @@
 
     $comment_stm = $pdo->query("SELECT id, content FROM comments WHERE postsid=".$_GET['id']);
 
-    while($row = $comment_stm->fetch()){
-        echo "<p>";
-        echo $row['content'] . "<br />" ;
-        echo "</p>";
-        
+    if(isset($_SESSION['role']) && $_SESSION['role'] == "user") {
+        while($row = $comment_stm->fetch()){
+            echo "<p>";
+            echo $row['content'] . "<br />" ;
+            echo "</p>";
+            
+        }
     }
-    //if(isset($_SESSION['role']) && $_SESSION['role'] == "user") {
-      
-   // }
-   if(isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
-    echo '<a href="handleComments.php"> Radera kommentar </a>' . "</br>";
+
+    if(isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
+        while($row = $comment_stm->fetch()){
+            echo "<p>";
+            echo $row['content'] . " " . "<a href=\"editComments.php?id=". $row['id'] . "\">"  ."Ta bort". "</a>" . "<br />" ;
+            echo "</p>";
+            
+        }
     }
 
 ?>    
