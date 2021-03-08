@@ -54,13 +54,16 @@
 
     while($row = $comment_stm->fetch()){
         echo "<p>";
-        echo "<a href=\"editPosts.php?id=". $row['id'] . "\">"  .$row['id']. "</a>" . ". " . $row['content'] . "<br />" ;
+        echo $row['content'] . "<br />" ;
         echo "</p>";
         
     }
     //if(isset($_SESSION['role']) && $_SESSION['role'] == "user") {
       
    // }
+   if(isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
+    echo '<a href="handleComments.php"> Radera kommentar </a>' . "</br>";
+    }
 
 ?>    
     <a href="homepage.php">Tillbaka</a>
