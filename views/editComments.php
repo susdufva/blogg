@@ -12,7 +12,6 @@
             header("location:homepage.php");
             } 
     }
-
  
 ?>
 <!DOCTYPE html>

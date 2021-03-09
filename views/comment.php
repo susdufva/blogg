@@ -68,7 +68,7 @@
             echo "</p>";
             
         }
-    }
+    } //om man är inloggad som admin finns länk för att radera kommentar
 
 ?>    
     <a href="homepage.php">Tillbaka</a>
