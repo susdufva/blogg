@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Lobster&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="login">
     <div class="start">
     <form method="post" action="login.php?action=login">
         <input type="text" placeholder ="username" name="username" id="username" > <br> 

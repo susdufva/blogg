@@ -14,10 +14,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Lobster&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="index">
     <header>
         <h1>Millhouse</h1>
-        <!--<img class="logo" src="images/logo3.jpg" alt="logga">-->
         <img class="divider" src="images/divider.jpg" alt="divider">
     </header>
     <div class="decor">
