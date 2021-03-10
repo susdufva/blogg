@@ -9,13 +9,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logga in</title>
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+    <div class="start">
     <form method="post" action="login.php?action=login">
         <input type="text" placeholder ="username" name="username" id="username" > <br> 
         <input type="password" placeholder="password" name="password" id="password" > <br>
-        <input type="submit" name="login" value="Logga in">
+        <input class="button" type="submit" name="login" value="Logga in">
     </form> 
+    </div>
 
     <?php
  

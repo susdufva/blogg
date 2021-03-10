@@ -1,0 +1,81 @@
+body{
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+    justify-content: center;
+}
+header{
+    font-family: 'Lobster', cursive;
+    font-size: 4rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    height: 220px;
+    margin: 50px 0px;
+    z-index: 1;
+    position: relative;
+}
+/*.logo{
+    width: 10.2rem;
+    height: 6.8rem;
+    position: relative;
+    top: 6.9rem;
+    right: 40px;
+    padding: 3px;
+    z-index: -1;
+}*/
+.divider{
+    position: absolute;
+    top: 8.8rem;
+    width: 47vw;
+    z-index: -2;
+    opacity: 20%;
+}
+.decor{
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(32, 184, 184);
+    font-size: 1.5rem;
+    text-decoration: underline;
+    display: flex;
+    text-align: center;
+    padding-left: 25px;
+    padding-right: 25px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    z-index: 2;
+}
+.start{
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 5rem;
+    border: solid 1px rgb(32, 184, 184);
+    width: 40rem;
+    height: 25rem;
+    z-index: 3;
+}
+input{
+    background-color: white;
+    color: black;
+    margin: 6px;
+    padding: 5px;
+    border-radius: 8px;
+    border: solid 1px black;
+}
+.button{
+    background-color: white;
+    padding: 5px 15px;
+    border-radius: 10px;
+    border: solid 1.5px rgb(32, 184, 184);
+    color: rgb(30, 141, 141);
+}
+.button:hover{
+    border: solid 2px rgb(34, 163, 163);
+}
+p{
+    text-decoration: none;
+}

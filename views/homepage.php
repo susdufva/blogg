@@ -28,7 +28,9 @@
    
 
     if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
+        echo "<p>";
         echo '<a href="logout.php">Logga ut </a>';
+        echo "</p>";
         die();
     } //om vi är inloggade kommer länk för att logga ut
     
