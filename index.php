@@ -12,12 +12,7 @@
     <title>Välkommen</title>
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Lobster&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 <body>
     <header>
@@ -27,7 +22,9 @@
     </header>
     <div class="decor">
             <h4 class="decor">Kläder </h4>
+            <span class="dot"></span>
             <h4 class="decor">Accessoarer </h4>
+            <span class="dot"></span>
             <h4 class="decor">Inredning </h4>
         </div>
     <?php

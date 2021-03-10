@@ -10,6 +10,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hanlde registration</title>
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Lobster&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -27,8 +30,12 @@
     $stmt->execute();
     
     if($stmt->rowCount()){ //Om det returneras rader så finns redan användarnamnet
+        echo "<div class='start'>";
+        echo "<h4>";
         echo "Användarnamnet upptaget <br />";
-        echo '<a href="../index.php">Tillbaka</a>';
+        echo "</h4>";
+        echo '<a class="button" href="../index.php">Tillbaka</a>';
+        echo "</div>";
         die();
     }
 
