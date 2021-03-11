@@ -9,33 +9,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comments</title>
-    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <link href="../css/post.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Lobster&display=swap" rel="stylesheet">
 </head>
 <body>
 <?php
      
-    $stmt = $pdo->prepare("SELECT id, title, message FROM posts WHERE id=:id_IN");
+    $stmt = $pdo->prepare("SELECT id, title, message, image FROM posts WHERE id=:id_IN");
     $stmt->bindParam(":id_IN", $_GET['id']);
 
     $success = $stmt->execute();
 
     while($message = $stmt->fetch()){
-        echo $message['title'] . "<br/>" . $message['message'] . "<br/>";
+        echo "<p class='left'>";
+        echo $message['title'] . "<br/>" . $message['message'] . "<br/>" .'<img class="image" src="'. $message['image'] . '" /> <br/> ';
+        echo "</p>";
     }
     
     //koden ovan behövs för att hämta meddelandet jag vill kommentera
 ?>
 
-<h3>Här kan du kommentera inlägget: </h3>
-    <form method="post" action="comment.php?action=comment">
-        <input type="hidden" name="id" value="<?=$_GET['id']?>">
-        <input type="hidden" name="username" value="<?=$_SESSION['username']?>"> </br>
-        <label for="text">Kommentera: </label>
-        <input type="text" name="comment">
-        <input type="submit" value="Kommentera">
-    </form> 
+<div class='left'>
+    <h4>Här kan du kommentera produkten: </h4>
+        <form method="post" action="comment.php?action=comment">
+            <input type="hidden" name="id" value="<?=$_GET['id']?>">
+            <input type="hidden" name="username" value="<?=$_SESSION['username']?>"> </br>
+            <input type="text" placeholder="kommentera.." name="comment" required>
+            <input class="submit" type="submit" value="Skicka"> 
+        </form> 
+</div>
     
 <?php
 
@@ -57,7 +60,7 @@
 
     if(isset($_SESSION['role']) && $_SESSION['role'] == "user") {
         while($row = $comment_stm->fetch()){
-            echo "<p>";
+            echo "<p class='left'>";
             echo $row['content'] . "<br />" ;
             echo "</p>";
             
@@ -66,14 +69,16 @@
 
     if(isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
         while($row = $comment_stm->fetch()){
-            echo "<p>";
-            echo $row['content'] . " " . "<a href=\"editComments.php?id=". $row['id'] . "\">"  ."Ta bort". "</a>" . "<br />" ;
+            echo "<p class='left'>";
+            echo $row['content'] . " " . "<a class='comment' href=\"editComments.php?id=". $row['id'] . "\">"  ."Ta bort". "</a>" . "<br />" ;
             echo "</p>";
             
         }
     } //om man är inloggad som admin finns länk för att radera kommentar
 
 ?>    
-    <a href="homepage.php">Tillbaka</a>
+<footer>
+    <a class="button" href="homepage.php">Tillbaka</a>
+</footer>
 </body>
 </html>

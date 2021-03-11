@@ -17,7 +17,7 @@
 <body class="index">
     <header>
         <h1>Millhouse</h1>
-        <img class="divider" src="images/divider.jpg" alt="divider">
+        <img class="divider" src="images/divider2.jpg" alt="divider">
     </header>
     <div class="decor">
             <h4 class="decor">Kläder </h4>
@@ -36,8 +36,8 @@
     <h4>Registrera dig för att kunna logga in:</h4>
 
     <form method="post" action="views/handleRegister.php">
-        <input type="text" placeholder="Användarnamn" name="username"> <br>
-        <input type="password" placeholder="Lösenord" name="password"> <br>
+        <input type="text" placeholder="Användarnamn" name="username" required> <br>
+        <input type="password" placeholder="Lösenord" name="password" required> <br>
         <input class="button" type="submit" value="Registrera">
     </form>
     <h4>Är du redan registrerad, logga in direkt</h4> 

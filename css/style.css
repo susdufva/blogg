@@ -5,6 +5,7 @@
     justify-content: center;
     font-family: 'Montserrat', sans-serif;
 }
+
 header{
     font-family: 'Lobster', cursive;
     font-size: 4rem;
@@ -18,9 +19,9 @@ header{
 }
 .divider{
     position: absolute;
-    top: 7.7rem;
+    top: 8.2rem;
     width: 39rem;
-    height: 52rem;
+    height: 20rem;
     z-index: -2;
     opacity: 20%;
 }

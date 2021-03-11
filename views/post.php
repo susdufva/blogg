@@ -14,10 +14,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Lobster&display=swap" rel="stylesheet">
 </head>
 <body>
+    <header>
     <div class="blogg">
 
-    <h1>Blogg</h1>
-    <h4>Skapa ett inlägg och recensera en produkt</h4>
+        <h1>Blogg</h1>
+        <h4>Skapa ett inlägg och recensera en produkt</h4>
 
 <?php
 
@@ -26,33 +27,37 @@
 
 ?>
 
-    <form method="post" action="handlePosts.php" enctype="multipart/form-data">
-        <input type="text" placeholder="Titel" name="title"> <br>
-        <textarea placeholder="message.." name="message"></textarea> <br>
-        <input type="file" placeholder="Ladda upp en bild" name="image"> </br>
-        <span>Kategori:</span> <br>
-        <select name="category" id="category">
+        <form method="post" action="handlePosts.php" enctype="multipart/form-data">
+            <input type="text" placeholder="Titel" name="title" required> <br>
+            <textarea placeholder="message.." name="message" required></textarea> <br>
+            <input type="file" placeholder="Ladda upp en bild" name="image" required> </br>
+            <span>Kategori:</span> <br>
+            <select name="category" id="category">
             <option value="blank"></option>
             <option value="Clothing">Kläder</option>
             <option value="Accessoarer">Accessoarer</option>
             <option value="Inredning">Inredning</option>
-        </select> <br>
-        <input type="date" id="date" name="date" value=" " 
-               min="2021-01-01" max="2021-12-31"> <br>
-        <input type="submit" value="Posta">
-    </form>
+            </select> <br>
+            <input type="date" id="date" name="date" value=" " 
+                min="2021-01-01" max="2021-12-31"> <br>
+            <input class="button" type="submit" value="Posta">
+        </form>
     </div>
+</header>
+    
 
     <?php
      while($row = $stmt->fetch()){
         echo "<div class='field'>";
-        echo "<a class='button' href=\"editPosts.php?id=". $row['id'] . "\">"  ."Ändra / Ta bort". "</a>" . "<br />" . $row['title'] . "<br />" . $row['message'] . '<img class="image" src="'. $row['image'] . '" /> <br/> ';
+        echo $row['title'] . "<br />" . $row['message'] . '<img class="image" src="'. $row['image'] . '" /> <br/> ' . "<a class='comment' href=\"editPosts.php?id=". $row['id'] . "\">"  ."Ändra / Ta bort". "</a>" . "<br />";
         echo "</div>";
         
     }
     //while satsen skriver ut meddelandena på sidan
     
     ?>
-    <a href="homepage.php">Tillbaka</a>
+    <footer>
+        <a class="button" href="homepage.php">Tillbaka</a>
+    </footer>
 </body>
 </html> 

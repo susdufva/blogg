@@ -17,7 +17,7 @@
     <div class="start">
     <form method="post" action="login.php?action=login">
         <input type="text" placeholder ="username" name="username" id="username" > <br> 
-        <input type="password" placeholder="password" name="password" id="password" > <br>
+        <input type="password" placeholder="password" name="password" id="password" required> <br>
         <input class="button" type="submit" name="login" value="Logga in">
     </form> 
     <?php

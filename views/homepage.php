@@ -16,15 +16,15 @@
 <body>
 <?php
     if(isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
-        echo "<p>";
+        echo "<div class='logout' >";
         echo '<a class="button" href="post.php"> Skapa och redigera inlägg </a>';
-        echo "</p>";
+        echo "</div>";
     }
     
     if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
-        echo "<p >";
+        echo "<div class='logout' >";
         echo '<a class="button" href="logout.php">Logga ut </a>';
-        echo "</p>";
+        echo "</div>";
     } //om vi är inloggade kommer länk för att logga ut
 
     $stmt = $pdo->query("SELECT * FROM posts ORDER BY id DESC");
