@@ -29,12 +29,24 @@
 
     $stmt = $pdo->query("SELECT * FROM posts ORDER BY id DESC");
 
-    while($row = $stmt->fetch()){
-        echo "<div class='field'>";
-        echo "<h4>" . $row['title'] . "</h4>" . "<br />" . "<p>" . $row['message'] . "</p>" . "<br />" . '<img class="image" src="'. $row['image'] . '" /> <br/> ' . "<a class='comment' href=\"comment.php?id=". $row['id'] . "\">" ."Kommentera". "</a>";
-        echo "</div>"; 
-    }
+    if(isset($_SESSION['role']) && $_SESSION['role'] == "user") {
+        while($row = $stmt->fetch()){
+            echo "<div class='field'>";
+            echo "<h4>" . $row['title'] . "</h4>" . "<br />" . "<p>" . $row['message'] . "</p>" . "<br />" . '<img class="image" src="'. $row['image'] . '" /> <br/> ' . "<a class='comment' href=\"comment.php?id=". $row['id'] . "\">" ."Kommentera". "</a>";
+            echo "</div>"; 
+        }
+    } 
     //while satsen skriver ut meddelandena på sidan
+
+    if(isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
+        while($row = $stmt->fetch()){
+            echo "<div class='field'>";
+            echo "<h4>" . $row['title'] . "</h4>" . "<br />" . "<p>" . $row['message'] . "</p>" . "<br />" . '<img class="image" src="'. $row['image'] . '" /> <br/> ' . "<a class='comment' href=\"comment.php?id=". $row['id'] . "\">" ."Kommentera". "</a>" . "  " .  "<a class='comment' href=\"editPosts.php?id=". $row['id'] . "\">"  ."Ta bort inlägget". "</a>" . "<br />";
+            echo "</div>"; 
+        }
+    }
+    //om man är inloggad som admin finns även en knapp för att radera inlägg
+   
     
 ?>
 </body>

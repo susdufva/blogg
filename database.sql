@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Värd: 127.0.0.1
--- Tid vid skapande: 11 mars 2021 kl 22:01
+-- Tid vid skapande: 12 mars 2021 kl 18:59
 -- Serverversion: 10.4.17-MariaDB
 -- PHP-version: 8.0.1
 
@@ -40,13 +40,13 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `content`, `date`, `user`, `postsId`) VALUES
-(24, 'Jag gillar den blå färgen', '2021-03-11 14:08:25', 'admin', 17),
 (25, 'Vilka fler färger kommer skjortan att komma in?', '2021-03-11 14:17:06', 'admin', 19),
 (26, 'Säljer ni kavajen också?', '2021-03-11 14:17:22', 'admin', 19),
 (27, 'Kommer ni få in några nya damklockor?', '2021-03-11 15:04:14', 'admin', 20),
 (28, 'Köpte den här lampan och absolut älskar den', '2021-03-11 15:05:03', 'user', 18),
 (29, 'Vad är det för mått på krukan?', '2021-03-11 20:12:10', 'admin', 21),
-(30, 'skriver en kommentar som jag ska radera', '2021-03-11 20:22:21', 'admin', 21);
+(30, 'skriver en kommentar som jag ska radera', '2021-03-11 20:22:21', 'admin', 21),
+(33, 'Jag gillar den blå färgen', '2021-03-12 17:57:31', 'test', 23);
 
 -- --------------------------------------------------------
 
@@ -68,11 +68,11 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `message`, `image`, `category`, `date`) VALUES
-(17, 'Plånböcker', 'Höstens färger på plånböcker är här, vilken gillar ni mest?', '../images/leather-case-1986378_640.jpg', 'Accessoarer', '2021-03-11'),
 (18, 'Lampa', 'Vi har tagit in en ny lampa från house doctor.', '../images/table-lamp-977069_640.jpg', 'Inredning', '2021-03-09'),
 (19, 'Skjorta', 'Ny skjorta inne gjord på egyptisk bomull, kommer komma i flera färger ', '../images/model-2911330_640.jpg', 'Clothing', '2021-03-10'),
 (20, 'Herrklocka', 'Ny klocka för våren', '../images/wrist-watch-2745278_640.png', 'Accessoarer', '2021-03-11'),
-(21, 'Kruka', 'Vit kruka, man kan också köpa med plast växten', '../images/flower-2592070_640.jpg', 'Inredning', '2021-03-13');
+(21, 'Kruka', 'Vit kruka, man kan också köpa med plast växten', '../images/flower-2592070_640.jpg', 'Inredning', '2021-03-13'),
+(23, 'Plånbok', 'Vårens plånböcker är här, vilken färg gillar ni mest?', '../images/leather-case-1986378_640.jpg', 'Accessoarer', '2021-03-12');
 
 -- --------------------------------------------------------
 
@@ -130,19 +130,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT för tabell `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT för tabell `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT för tabell `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
