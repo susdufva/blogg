@@ -36,10 +36,11 @@
     <h4>Registrera dig för att kunna logga in:</h4>
 
     <form method="post" action="views/handleRegister.php">
-        <input type="text" placeholder="Användarnamn" name="username" required> <br>
-        <input type="password" placeholder="Lösenord" name="password" required> <br>
+        <input type="text" placeholder="Användarnamn" name="username"> <br>
+        <input type="password" placeholder="Lösenord" name="password"> <br>
         <input class="button" type="submit" value="Registrera">
     </form>
+
     <h4>Är du redan registrerad, logga in direkt</h4> 
     <form method="post" action="views/login.php">
     <button class="button" type="submit">Logga in</button>

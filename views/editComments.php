@@ -21,12 +21,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Comments</title>
+    <link href="../css/editComment.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Lobster&display=swap" rel="stylesheet">
 </head>
 <body>
-    <form method="post" action="editComments.php?action=delete">
-        <input type="hidden" name="id" value="<?=$_GET['id']?>">
-        <input type="submit" value="Delete">
-    </form>
-    <a href="homepage.php">Tillbaka</a>
+    <div class="field">
+        <p>Är du säker på att du vill radera kommentaren?</p>
+        <form method="post" action="editComments.php?action=delete">
+            <input type="hidden" name="id" value="<?=$_GET['id']?>">
+            <input class="submit" type="submit" value="Radera">
+        </form>
+    </div>
+<footer>
+    <a class='button' href="homepage.php">Tillbaka</a>
+</footer>
 </body>
 </html>
