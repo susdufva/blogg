@@ -46,7 +46,7 @@
     $salt = "lo&7äöpetn67^^7337--*)(&¤"; //salt används för att skydda krypteringen, för att försvåra lösenordet/krypteringen ännu mer 
     $password = md5($password.$salt); 
 
-    if(!empty($username)){
+    if(!empty($username) or !empty($password)){
         echo "<div class='start'>";
         echo "<h4>";
         echo "Du måste fylla i både användarnamn och lösenord!";
@@ -55,16 +55,8 @@
         echo "</div>";
         die;
     }
-
-    if(!empty($password)){
-        echo "<div class='start'>";
-        echo "<h4>";
-        echo "Du måste fylla i både användarnamn och lösenord!";
-        echo "</h4>";
-        echo '<a class="button" href="../index.php">Tillbaka</a>';
-        echo "</div>";
-        die;
-    }
+    //denna kod kollar så man fyllt i alla fält vid registrering 
+  
     
     $sql = "INSERT INTO users (username, password) VALUES(:username_IN, :password_IN)";
     //queryn lägger till nya unika användare i databasen 
@@ -76,7 +68,6 @@
     } else {
         echo "Något gick fel!";
     }
- 
  
 ?>
 </body>
